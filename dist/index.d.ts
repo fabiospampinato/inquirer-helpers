@@ -1,7 +1,9 @@
 declare const InquirerHelpers: {
+    FULLSCREEN: boolean;
     PAGE_SIZE: number;
     CLI_WIDTH: number;
     _cliWidth(): any;
+    _cliPageSize(): number;
     confirm(message: string, fallback?: boolean): Promise<boolean>;
     noYes(message: string): Promise<boolean>;
     yesNo(message: string): Promise<boolean>;

@@ -10,11 +10,15 @@ $ npm install --save inquirer-helpers
 
 ## API
 
-### `Helpers.PAGE_SIZE`
+### `Helpers.FULLSCREEN = true`
+
+Showing as many lines as possible.
+
+### `Helpers.PAGE_SIZE = 10`
 
 Number of rows displayed.
 
-### `Helpers.CLI_WIDTH`
+### `Helpers.CLI_WIDTH = 80`
 
 Default CLI width if it cannot be properly detected.
 

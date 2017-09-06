@@ -1,6 +1,6 @@
 {
   "name": "inquirer-helpers",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "Collection of helpers for Inquirer.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -30,9 +30,9 @@
   "dependencies": {
     "chalk": "^2.1.0",
     "cli-truncate": "^1.1.0",
-    "cli-width": "^2.2.0",
     "inquirer": "^3.2.3",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "window-size": "^1.1.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.0",

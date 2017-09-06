@@ -3,9 +3,9 @@
 
 import * as _ from 'lodash';
 import * as chalk from 'chalk';
-import * as cliWidth from 'cli-width';
-import * as truncate from 'cli-truncate';
 import * as inquirer from 'inquirer';
+import * as truncate from 'cli-truncate';
+import * as windowSize from 'window-size';
 
 /* INQUIRER HELPERS */
 
@@ -13,6 +13,7 @@ const InquirerHelpers = {
 
   /* VARIABLES */
 
+  FULLSCREEN: true,
   PAGE_SIZE: 10,
   CLI_WIDTH: 80,
 
@@ -20,7 +21,18 @@ const InquirerHelpers = {
 
   _cliWidth () {
 
-    return cliWidth ({ defaultWidth: InquirerHelpers.CLI_WIDTH });
+    const size = windowSize.get ();
+
+    return size ? size.width : InquirerHelpers.CLI_WIDTH;
+
+  },
+
+  _cliPageSize () {
+
+    const size = windowSize.get (),
+          height = size ? size.height : InquirerHelpers.PAGE_SIZE + 2;
+
+    return Math.min ( height - 2, InquirerHelpers.FULLSCREEN ? Infinity : InquirerHelpers.PAGE_SIZE );
 
   },
 
@@ -82,7 +94,9 @@ const InquirerHelpers = {
 
     /* END OF LIST */
 
-    if ( list.length > InquirerHelpers.PAGE_SIZE ) list.push ( new inquirer.Separator ( '\n' ) );
+    const pageSize = InquirerHelpers._cliPageSize ();
+
+    if ( list.length > pageSize ) list.push ( new inquirer.Separator ( '\n' ) );
 
     /* LIST */
 
@@ -90,7 +104,7 @@ const InquirerHelpers = {
       type: 'list',
       name: 'result',
       choices: list,
-      pageSize: InquirerHelpers.PAGE_SIZE,
+      pageSize,
       message,
       default: fallback,
       validate: x => !_.isUndefined ( fallback ) || ( _.isString ( x ) && x.trim () )
