@@ -73,9 +73,9 @@ const InquirerHelpers = {
 
     list.map ( entry => {
       if ( _.isString ( entry ) ) {
-        return truncate ( entry, maxWidth );
+        return truncate ( entry.trim (), maxWidth );
       } else if ( _.isPlainObject ( entry ) && entry.name ) {
-        entry.name = truncate ( entry.name, maxWidth );
+        entry.name = truncate ( entry.name.trim (), maxWidth );
       }
       return entry;
     });
