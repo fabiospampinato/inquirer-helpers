@@ -18,9 +18,9 @@ const InquirerHelpers = {
 
   /* HELPERS */
 
-  _cliWidth ( available: boolean = true ) {
+  _cliWidth () {
 
-    return cliWidth ({ defaultWidth: InquirerHelpers.CLI_WIDTH }) + ( available ? -6 : 0 ); // Accounting for inquirer's characters too
+    return cliWidth ({ defaultWidth: InquirerHelpers.CLI_WIDTH });
 
   },
 
@@ -69,7 +69,7 @@ const InquirerHelpers = {
 
     /* TRUNCATE */
 
-    const maxWidth = InquirerHelpers._cliWidth ();
+    const maxWidth = InquirerHelpers._cliWidth () - 2; // Accounting for inquirer's characters
 
     list.map ( entry => {
       if ( _.isString ( entry ) ) {
@@ -104,7 +104,7 @@ const InquirerHelpers = {
 
     /* TRUNCATE */
 
-    const maxWidth = InquirerHelpers._cliWidth ();
+    const maxWidth = InquirerHelpers._cliWidth () - 6; // Accounting for inquirer's characters and table's characters
 
     table.map ( row => [truncate ( row[0], maxWidth ), ...row.slice ( 1 )] );
 

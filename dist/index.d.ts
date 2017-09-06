@@ -1,7 +1,7 @@
 declare const InquirerHelpers: {
     PAGE_SIZE: number;
     CLI_WIDTH: number;
-    _cliWidth(available?: boolean): any;
+    _cliWidth(): any;
     confirm(message: string, fallback?: boolean): Promise<boolean>;
     noYes(message: string): Promise<boolean>;
     yesNo(message: string): Promise<boolean>;
