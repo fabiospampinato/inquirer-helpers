@@ -1,6 +1,6 @@
 {
   "name": "inquirer-helpers",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Collection of helpers for Inquirer.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

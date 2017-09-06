@@ -165,6 +165,7 @@ const InquirerHelpers = {
 
     const list = table.map ( ( row, index ) => ({
       name: row.length > 1 ? `| ${row.join ( ' | ' )} |` : row[0],
+      short: row[0],
       value: values[index]
     }));
 
