@@ -1,0 +1,42 @@
+{
+  "name": "inquirer-helpers",
+  "version": "1.0.0",
+  "description": "Collection of helpers for Inquirer.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "clean": "rimraf dist",
+    "compile": "tsc --skipLibCheck",
+    "compile:watch": "tsc --skipLibCheck --watch",
+    "lint": "tslint \"src/**/*.ts*\" --force",
+    "prepublish": "npm run clean && npm run lint && npm run compile"
+  },
+  "bugs": {
+    "url": "https://github.com/fabiospampinato/inquirer-helpers/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Fabio Spampinato",
+    "email": "spampinabio@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fabiospampinato/inquirer-helpers.git"
+  },
+  "keywords": [
+    "inquirer",
+    "helpers"
+  ],
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "cli-truncate": "^1.1.0",
+    "cli-width": "^2.2.0",
+    "inquirer": "^3.2.3",
+    "lodash": "^4.17.4"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.0",
+    "tslint": "^4.4.2",
+    "typescript": "~2.5.0"
+  }
+}
