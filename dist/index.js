@@ -115,7 +115,7 @@ var InquirerHelpers = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        maxWidth = InquirerHelpers._cliWidth() - 2;
+                        maxWidth = InquirerHelpers._cliWidth() - 3;
                         list.map(function (entry) {
                             if (_.isString(entry)) {
                                 return truncate(entry.trim(), maxWidth);
@@ -151,7 +151,7 @@ var InquirerHelpers = {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        maxWidth = InquirerHelpers._cliWidth() - 6;
+                        maxWidth = InquirerHelpers._cliWidth() - 7;
                         table.map(function (row) { return [truncate(row[0], maxWidth)].concat(row.slice(1)); });
                         /* FORMATTING */
                         if (table[0].length > 1) {
