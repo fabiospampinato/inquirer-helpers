@@ -44,7 +44,7 @@ Prompt to pick a value from the list.
 
 Auto-truncates values.
 
-### `Helpers.table ( message: string, table: string[][], values: any[], fallback? )`
+### `Helpers.table ( message: string, table: string[][], values: any[], colors: string[] = [], fallback? )`
 
 Prompt to pick a value from a list, formatted as a table.
 
