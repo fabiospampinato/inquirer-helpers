@@ -114,6 +114,43 @@ const InquirerHelpers = {
 
   },
 
+  async checkbox ( message, list, fallback ) {
+
+    /* TRUNCATE */
+
+    const maxWidth = InquirerHelpers._cliWidth () - 3; // Accounting for inquirer's characters
+
+    list.map ( entry => {
+      if ( _.isString ( entry ) ) {
+        return truncate ( entry.trim (), maxWidth );
+      } else if ( _.isPlainObject ( entry ) && entry.name ) {
+        entry.name = truncate ( entry.name.trim (), maxWidth );
+      }
+      return entry;
+    });
+
+    /* END OF LIST */
+
+    const pageSize = InquirerHelpers._cliPageSize ();
+
+    if ( list.length > pageSize ) list.push ( new inquirer.Separator ( '\n' ) );
+
+    /* LIST */
+
+    const {result} = await inquirer.prompt ({
+      type: 'checkbox',
+      name: 'result',
+      choices: list,
+      pageSize,
+      message,
+      default: fallback,
+      validate: x => !_.isUndefined ( fallback ) || x.length
+    });
+
+    return result;
+
+  },
+
   async table ( message: string, table: string[][], values: any[], colors: any[] = [], fallback? ) {
 
     /* TRUNCATE */
