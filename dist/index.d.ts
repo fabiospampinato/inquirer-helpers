@@ -9,7 +9,7 @@ declare const InquirerHelpers: {
     yesNo(message: string): Promise<boolean>;
     input(message: string, fallback?: any): Promise<any>;
     list(message: string, list: any[], fallback?: any): Promise<any>;
-    checkbox(message: any, list: any, fallback: any): Promise<any>;
+    checkbox(message: string, list: any[], fallback?: any): Promise<any>;
     table(message: string, table: string[][], values: any[], colors?: any[], fallback?: any): Promise<any>;
 };
 export default InquirerHelpers;
