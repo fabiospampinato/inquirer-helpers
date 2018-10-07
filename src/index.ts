@@ -144,7 +144,7 @@ const InquirerHelpers = {
       pageSize,
       message,
       default: fallback,
-      validate: x => !_.isUndefined ( fallback ) || x.length
+      validate: x => !_.isUndefined ( fallback ) || !!x.length
     });
 
     return result;
