@@ -114,7 +114,7 @@ const InquirerHelpers = {
 
   },
 
-  async checkbox ( message, list, fallback ) {
+  async checkbox ( message: string, list: any[], fallback? ) {
 
     /* TRUNCATE */
 
