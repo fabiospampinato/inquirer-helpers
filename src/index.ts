@@ -214,4 +214,4 @@ const InquirerHelpers = {
 
 /* EXPORT */
 
-export default InquirerHelpers;
+export = Object.assign ( InquirerHelpers, { default: InquirerHelpers } );
