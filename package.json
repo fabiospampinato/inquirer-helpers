@@ -27,6 +27,7 @@
     "helpers"
   ],
   "dependencies": {
+    "@types/lodash": "^4.14.117",
     "chalk": "^2.1.0",
     "cli-truncate": "^1.1.0",
     "inquirer": "^3.2.3",

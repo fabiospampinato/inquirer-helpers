@@ -1,7 +1,13 @@
 
 /* IMPORT */
 
-import * as _ from 'lodash';
+import isPlainObject = require ( 'lodash/isPlainObject' );
+import isString = require ( 'lodash/isString' );
+import isUndefined = require ( 'lodash/isUndefined' );
+import max = require ( 'lodash/max' );
+import padStart = require ( 'lodash/padStart' );
+import padEnd = require ( 'lodash/padEnd' );
+import sum = require ( 'lodash/sum' );
 import * as chalk from 'chalk';
 import * as inquirer from 'inquirer';
 import * as truncate from 'cli-truncate';
@@ -70,7 +76,7 @@ const InquirerHelpers = {
       name: 'result',
       message,
       default: fallback,
-      validate: x => !_.isUndefined ( fallback ) || ( _.isString ( x ) && !!x.trim () )
+      validate: x => !isUndefined ( fallback ) || ( isString ( x ) && !!x.trim () )
     });
 
     return result;
@@ -84,9 +90,9 @@ const InquirerHelpers = {
     const maxWidth = InquirerHelpers._cliWidth () - 3; // Accounting for inquirer's characters
 
     list.map ( entry => {
-      if ( _.isString ( entry ) ) {
+      if ( isString ( entry ) ) {
         return truncate ( entry.trim (), maxWidth );
-      } else if ( _.isPlainObject ( entry ) && entry.name ) {
+      } else if ( isPlainObject ( entry ) && entry.name ) {
         entry.name = truncate ( entry.name.trim (), maxWidth );
       }
       return entry;
@@ -107,7 +113,7 @@ const InquirerHelpers = {
       pageSize,
       message,
       default: fallback,
-      validate: x => !_.isUndefined ( fallback ) || ( _.isString ( x ) && x.trim () )
+      validate: x => !isUndefined ( fallback ) || ( isString ( x ) && x.trim () )
     });
 
     return result;
@@ -121,9 +127,9 @@ const InquirerHelpers = {
     const maxWidth = InquirerHelpers._cliWidth () - 3; // Accounting for inquirer's characters
 
     list.map ( entry => {
-      if ( _.isString ( entry ) ) {
+      if ( isString ( entry ) ) {
         return truncate ( entry.trim (), maxWidth );
-      } else if ( _.isPlainObject ( entry ) && entry.name ) {
+      } else if ( isPlainObject ( entry ) && entry.name ) {
         entry.name = truncate ( entry.name.trim (), maxWidth );
       }
       return entry;
@@ -144,7 +150,7 @@ const InquirerHelpers = {
       pageSize,
       message,
       default: fallback,
-      validate: x => !_.isUndefined ( fallback ) || !!x.length
+      validate: x => !isUndefined ( fallback ) || !!x.length
     });
 
     return result;
@@ -165,8 +171,8 @@ const InquirerHelpers = {
 
       /* MAX LENGHTS  */
 
-      const maxLenghts = table[0].map ( ( val, index ) => _.max ( table.map ( row => String ( row[index] ).length ) ) ),
-            overflowColumn = maxLenghts.findIndex ( ( length, index ) => ( _.sum ( maxLenghts.slice ( 0, index + 1 ) ) + ( index * 4 ) ) > maxWidth ),
+      const maxLenghts = table[0].map ( ( val, index ) => max ( table.map ( row => String ( row[index] ).length ) ) ),
+            overflowColumn = maxLenghts.findIndex ( ( length, index ) => ( sum ( maxLenghts.slice ( 0, index + 1 ) ) + ( index * 4 ) ) > maxWidth ),
             maxColumn = overflowColumn >= 0 ? Math.max ( 0, overflowColumn - 1 ) : maxLenghts.length - 1;
 
       /* FILTERING */
@@ -177,8 +183,8 @@ const InquirerHelpers = {
 
       table = table.map ( row => {
         return row.map ( ( val, index ) => {
-          const padFN = index > 0 ? 'padStart' : 'padEnd';
-          return _[padFN]( val, maxLenghts[index] );
+          const padFN = index > 0 ? padStart : padEnd;
+          return padFN ( val, maxLenghts[index] );
         });
       });
 
