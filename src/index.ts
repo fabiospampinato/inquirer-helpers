@@ -220,4 +220,4 @@ const InquirerHelpers = {
 
 /* EXPORT */
 
-export = Object.assign ( InquirerHelpers, { default: InquirerHelpers } );
+export default InquirerHelpers;
